@@ -1,3 +1,164 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Materials Design Lab | Johns Hopkins University</title>
+    <style>
+        /* Basic CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
 
-This is Xingfei Wei's personal website.
+        /* Header Styles */
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #f4f4f4;
+            padding: 1rem;
+        }
+        
+        .navbar a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            color: #003366;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Research Areas Grid */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .research-card {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+
+        /* Team Members */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Computational Materials Design Laboratory</h1>
+        <p>Developing Computational Methods to Accelerate Scientific Discovery</p>
+    </header>
+
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section class="section" id="home">
+            <h2>Welcome to Our Lab</h2>
+            <p>My lab aims at using computational and theoretical methods to uncover materials' physical chemistry chemical physics for applications in energy management, mass transport, information processing, and human health improvement. My research interests include thermal transport, polymer science, interface engineering, nanotechnology, multi-scale simulation, machine learning, data science, and artificial intelligence. I will develop Physics-based computational models with High Performance Computers. Through rigorous calculation and interdisciplinary collaboration, my research will have a broad impact in thermal physics, theoretical and computational chemistry, materials science, and data science.</p>
+        </section>
+
+        <section class="section" id="research">
+            <h2>Research Areas</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Research Area 1</h3>
+                    <p>Description of research area 1...</p>
+                </div>
+                <div class="research-card">
+                    <h3>Research Area 2</h3>
+                    <p>Description of research area 2...</p>
+                </div>
+                <!-- Add more research areas -->
+            </div>
+        </section>
+
+        <section class="section" id="publications">
+            <h2>Recent Publications</h2>
+            <ul>
+                <li>Publication 1 (2025)</li>
+                <li>Publication 2 (2024)</li>
+                <li>Publication 3 (2024)</li>
+            </ul>
+        </section>
+
+        <section class="section" id="team">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="./fig/me.jpg" alt="Principal Investigator">
+                    <h3>Dr. Xingfei Wei</h3>
+                    <p>Principal Investigator</p>
+                </div>
+                <!-- Add team members -->
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Contact Us</h2>
+            <p>Xingfei Wei, Postdoctoral Schoolar<br>
+            Department of Chemistry<br>
+            Johns Hopkins University<br>
+            Baltimore, MD 21218<br>
+            Email: xwei20@jhu.edu</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Computational Materials Design Laboratory. All rights reserved.</p>
+    </footer>
+</body>
+</html>
