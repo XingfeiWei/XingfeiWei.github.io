@@ -29,16 +29,1015 @@
 </section>
 
 <section class="section" id="data">
-    <h2>Data Sets</h2>
+  <h2>Data Sets</h2>
+  <p class="dataset-intro">Five research catagories, 70 entries. Sizes refer to the cited publication, release or documented benchmark; molecules, configurations, reactions and graphs are different counting units.</p>
+  <p class="dataset-meta">Reviewed against original papers and official resources on October 14, 2026. Dynamic database counts are snapshots. Graph-loader counts can differ after molecule filtering. A linked paper or model repository does not necessarily provide a downloadable copy of every training record.</p>
+  <nav class="dataset-nav" aria-label="Dataset catagories">
+    <a href="#dataset-group-1">1. Molecular quantum chemistry</a>
+    <a href="#dataset-group-2">2. Materials and crystals</a>
+    <a href="#dataset-group-3">3. Activity and toxicity</a>
+    <a href="#dataset-group-4">4. Properties and reactions</a>
+    <a href="#dataset-group-5">5. Proteins and graphs</a>
+  </nav>
+  <details class="dataset-checks">
+    <summary>What was checked and improved</summary>
     <ul>
-        <li>currently developing this page</li>
+      <li><strong>Aquamarine:</strong> Added its published size and separated geometry optimization from single-point labels. <a href="https://www.nature.com/articles/s41597-024-03521-8">Source</a></li>
+      <li><strong>QCell:</strong> Recorded 525,881 new configurations and the 16,000-configuration lipid subset; the larger combined corpus includes other datasets. <a href="https://arxiv.org/html/2510.09939v2">Source</a></li>
+      <li><strong>MP-r²SCAN:</strong> Used the exact Figshare v2 counts: 34,927 material IDs and 238,247 structures. <a href="https://figshare.com/articles/dataset/Materials_Project_Trajectory_Dataset_of_r_sup_2_sup_SCAN_MPr_sup_2_sup_SCAN_/28245650/2">Source</a></li>
+      <li><strong>SMAX:</strong> Added the published count of 1,693,386 configurations. <a href="https://arxiv.org/html/2602.23489v1">Source</a></li>
+      <li><strong>Graph benchmark counts:</strong> Used documented PyG counts for ClinTox (1,484), BBBP (2,050) and ToxCast (8,597), rather than mixing filtered releases. <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Source</a></li>
+      <li><strong>Crystal subsets:</strong> Added CDVAE subset sizes: Perov-5 18,928; Carbon-24 10,153; MP-20 45,231. <a href="https://arxiv.org/html/2110.06197">Source</a></li>
+      <li><strong>COLLAB / REDDIT-BINARY:</strong> Added graph/class counts and corrected the exact REDDIT-BINARY loader name. <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">Source</a></li>
+      <li><strong>Lipophilicity / GMTKN55 / DREAM:</strong> Specified logD7.4, relative-energy counting units, and the original olfaction challenge reported in 2017. <a href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html">Source</a></li>
     </ul>
+  </details>
+  <div class="dataset-group" id="dataset-group-1">
+    <h3>1. Molecular quantum chemistry and force-field datasets</h3>
+    <div class="dataset-table-wrapper" tabindex="0" role="region" aria-label="1. Molecular quantum chemistry and force-field datasets">
+      <table class="dataset-table">
+        <caption>22 entries · Scroll horizontally on smaller screens.</caption>
+        <colgroup>
+          <col style="width: 12%">
+          <col style="width: 16%">
+          <col style="width: 13%">
+          <col style="width: 17%">
+          <col style="width: 15%">
+          <col style="width: 17%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead><tr>
+          <th scope="col">Dataset / resource</th>
+          <th scope="col">Systems / coverage</th>
+          <th scope="col">Size / counting unit</th>
+          <th scope="col">Data / reference method</th>
+          <th scope="col">Task / main use</th>
+          <th scope="col">Version / representation notes</th>
+          <th scope="col">References</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">QM7</th>
+            <td>Small organic molecules; ≤7 heavy atoms</td>
+            <td>7,165 molecules</td>
+            <td>PBE0; optimized structures and atomization energies; 3D</td>
+            <td>Molecular energy prediction</td>
+            <td class="dataset-note">3D optimized structures; one primary energy target.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1103/PhysRevLett.108.058301">Paper</a>
+              <a href="https://www.quantum-machine.org/datasets/">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QM7b</th>
+            <td>Small organic molecules</td>
+            <td>7,211 molecules; 14 targets</td>
+            <td>Multiple quantum-chemical properties; 3D</td>
+            <td>Multitask property prediction</td>
+            <td class="dataset-note">3D structures; 14 targets across multiple electronic-structure methods.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/1305.7074">Paper</a>
+              <a href="https://www.quantum-machine.org/datasets/">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QM8</th>
+            <td>Small organic molecules</td>
+            <td>21,786 molecules; 12 targets</td>
+            <td>TDDFT and CC2 excitation energies and oscillator strengths; 3D structures</td>
+            <td>Quantum-property regression</td>
+            <td class="dataset-note">12 benchmark targets; excited-state data rather than MD trajectories.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1063/1.4928757">Paper</a>
+              <a href="https://www.quantum-machine.org/datasets/">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QM9</th>
+            <td>H, C, N, O, F molecules; ≤9 heavy atoms</td>
+            <td>133,885 molecules; 12 benchmark targets</td>
+            <td>B3LYP/6-31G(2df,p); energetic, electronic, thermodynamic properties; 3D</td>
+            <td>Molecular property prediction</td>
+            <td class="dataset-note">133,885 in the original release; filtered loaders and target counts differ.</td>
+            <td class="dataset-references">
+              <a href="https://www.nature.com/articles/sdata201422">Paper</a>
+              <a href="https://doi.org/10.6084/m9.figshare.978904">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QM7-X</th>
+            <td>Small organic molecules with ≤7 heavy atoms; equilibrium and displaced geometries</td>
+            <td>4,195,237 configurations</td>
+            <td>PBE0+MBD; 42 properties, including energies and forces</td>
+            <td>Potential-energy surfaces and property learning</td>
+            <td class="dataset-note">42 molecular and atomic properties; not 4.2 million distinct molecules.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2006.15139">Paper</a>
+              <a href="https://doi.org/10.5281/zenodo.4288677">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ANI-1</th>
+            <td>Off-equilibrium organic molecules</td>
+            <td>More than 20 million conformations in the original publication</td>
+            <td>ωB97X/6-31G(d) energies and 3D geometries</td>
+            <td>Organic potential-energy surfaces</td>
+            <td class="dataset-note">Use the release-specific record count; original ANI-1 emphasizes energy labels.</td>
+            <td class="dataset-references">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5735918/">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ANI-1x</th>
+            <td>H, C, N, O molecules; diverse conformations</td>
+            <td>~5 million configurations</td>
+            <td>Primarily ωB97X/6-31G(d); energies, forces, additional properties</td>
+            <td>Transferable organic ML potentials</td>
+            <td class="dataset-note">~5 million DFT geometries; ANI-1ccx is a separate higher-level subset.</td>
+            <td class="dataset-references">
+              <a href="https://www.nature.com/articles/s41597-020-0473-z">Paper</a>
+              <a href="https://github.com/aiqm/ANI1x_datasets">Repository</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MD17 / rMD17</th>
+            <td>Trajectories of selected small molecules</td>
+            <td>MD17: per-system counts; rMD17: 100,000 geometries for each of 10 molecules</td>
+            <td>MD17: primarily PBE+TS; rMD17: PBE/def2-SVP with tighter numerical settings; energies and forces</td>
+            <td>Molecule-specific force-field benchmarks</td>
+            <td class="dataset-note">MD17 and rMD17 labels are distinct; use the corresponding splits and references.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1126/sciadv.e1603015">MD17 paper</a>
+              <a href="https://www.sgdml.org/#datasets">MD17 data</a>
+              <a href="https://archive.materialscloud.org/record/466">rMD17 data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MD22</th>
+            <td>Seven molecular and supramolecular systems; 42–370 atoms</td>
+            <td>~223,000 configurations</td>
+            <td>PBE+MBD; energies and forces</td>
+            <td>Large-system and nonlocal-interaction benchmarks</td>
+            <td class="dataset-note">3D trajectories; seven systems spanning biomolecular and supramolecular examples.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2209.14865">Paper</a>
+              <a href="https://www.sgdml.org/#datasets">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">SPICE</th>
+            <td>Drug-like molecules, peptides, dimers, solvated molecules, ions</td>
+            <td>2,008,628 conformations in the official repository summary</td>
+            <td>ωB97M-D3BJ/def2-TZVPPD; energies, forces, charges, multipoles, bond orders</td>
+            <td>Biomolecular ML potentials</td>
+            <td class="dataset-note">Summary covers 113,999 molecules/clusters and 17 elements; earlier releases are smaller.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1038/s41597-022-01882-6">Paper</a>
+              <a href="https://github.com/openmm/spice-dataset">Repository and downloads</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Aquamarine / AQM</th>
+            <td>Large drug-like molecules; gas-phase and implicit-water conformers</td>
+            <td>1,653 molecules; 59,783 conformers in each gas/solvent collection</td>
+            <td>DFTB3+MBD optimized geometries; PBE0+MBD single-point properties; implicit-water variants</td>
+            <td>Larger molecules and solvent effects</td>
+            <td class="dataset-note">AQM-gas and AQM-sol distinguish molecular environment; up to 92 total atoms.</td>
+            <td class="dataset-references">
+              <a href="https://www.nature.com/articles/s41597-024-03521-8">Paper (2024)</a>
+              <a href="https://doi.org/10.5281/zenodo.10208010">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">GEMS training data</th>
+            <td>General off-equilibrium protein fragments and targeted larger fragments</td>
+            <td>2,713,986 general fragment configurations plus system-specific fragments</td>
+            <td>PBE0+MBD; energies, forces, electronic properties</td>
+            <td>Fragment-based biomolecular force fields</td>
+            <td class="dataset-note">GEMS names both an approach and associated training data; targeted fragments depend on the system.</td>
+            <td class="dataset-references">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11809612/">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">OMol25</th>
+            <td>Biomolecules, metal complexes, electrolytes, other molecular systems</td>
+            <td>&gt;100 million DFT calculations</td>
+            <td>ωB97M-V/def2-TZVPD; energies and forces</td>
+            <td>Molecular foundation-model training</td>
+            <td class="dataset-note">Broad molecular DFT corpus; cite the specific release, not only a model checkpoint.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2505.08762">Paper</a>
+              <a href="https://huggingface.co/facebook/OMol25">Data and models</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">OPoly26</th>
+            <td>Polymer clusters; varied monomers, architectures, chain lengths, solvation</td>
+            <td>&gt;6.57 million calculations; ≤360 atoms per cluster</td>
+            <td>Same DFT settings as OMol25</td>
+            <td>Polymer ML potentials</td>
+            <td class="dataset-note">Polymer extension compatible with OMol25 calculation settings.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2512.23117">Paper</a>
+              <a href="https://huggingface.co/facebook/OMol25">Dataset collection</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QCML</th>
+            <td>Small molecules; ≤8 heavy atoms; broad elements and electronic states</td>
+            <td>33.5 million DFT + 14.7 billion semiempirical calculations</td>
+            <td>PBE0 DFT with dispersion-correction fields; GFN0/GFN2-xTB data; energies, forces, multipoles and matrices</td>
+            <td>Large-scale quantum-chemistry learning</td>
+            <td class="dataset-note">DFT and semiempirical entries are separate collections; inspect the selected label fields.</td>
+            <td class="dataset-references">
+              <a href="https://www.nature.com/articles/s41597-025-04720-7">Paper (2025)</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QCell</th>
+            <td>Nucleic acids, lipids, carbohydrates, solvated ions, water clusters and dimers</td>
+            <td>525,881 newly generated configurations</td>
+            <td>PBE0+MBD(-NL); quantum reference data</td>
+            <td>Underrepresented biomolecular chemistry</td>
+            <td class="dataset-note">The combined ~41 million collection includes other datasets; it is not the size of QCell alone.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2510.09939">Paper</a>
+              <a href="https://github.com/general-molecular-simulations/qcell">Repository</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QCell lipid subset</th>
+            <td>Phospholipid fragments and cholesterol-containing lipid clusters</td>
+            <td>16,000 configurations: 12,000 lipid 1–3-mers + 4,000 cholesterol-containing fragments</td>
+            <td>PBE0+MBD; 3D structures and quantum labels</td>
+            <td>Lipid-related interactions</td>
+            <td class="dataset-note">Included within QCell; these are configurations, not 16,000 different lipid species.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2510.09939">Parent paper</a>
+              <a href="https://github.com/general-molecular-simulations/qcell">Parent repository</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">tmQMg</th>
+            <td>Transition-metal complexes</td>
+            <td>60,799 in the original cited version; 74,547 in the current repository</td>
+            <td>Quantum-chemical properties and natural quantum graphs</td>
+            <td>Metal-complex property prediction</td>
+            <td class="dataset-note">Natural quantum graph representations derived from NBO analysis; version-dependent coverage.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1039/D2DD00129B">Paper</a>
+              <a href="https://github.com/uiocompcat/tmQMg">Repository</a>
+              <a href="https://archive.sigma2.no/dataset/569AEAF9-5F8E-4BE3-B30E-0D439BC417C2">Archived data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Transition1x</th>
+            <td>Reactants, products, transition-region geometries</td>
+            <td>10,073 reactions; ~9.6 million configurations</td>
+            <td>ωB97X/6-31G(d); energies and forces along reaction pathways</td>
+            <td>Generalizable reactive ML potentials</td>
+            <td class="dataset-note">Reaction count and geometry count measure different units.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2207.12858">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Alchemy</th>
+            <td>Small organic molecules; ≤14 heavy atoms</td>
+            <td>119,487 molecules; 12 targets in original benchmark</td>
+            <td>Quantum properties; 3D</td>
+            <td>Multitask quantum-property regression</td>
+            <td class="dataset-note">119,487 is the original paper benchmark; later collections can be larger.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/1906.09427">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">PCQM4M</th>
+            <td>Large molecular graph collection</td>
+            <td>3,803,453 molecules; 1 target</td>
+            <td>DFT HOMO–LUMO gap; molecular graphs</td>
+            <td>Large-scale graph learning</td>
+            <td class="dataset-note">One HOMO–LUMO-gap target; original graph benchmark without supplied 3D inputs.</td>
+            <td class="dataset-references">
+              <a href="https://www-cs.stanford.edu/people/jure/pubs/ogblsc-neurips21.pdf">OGB-LSC paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">PCQM4Mv2</th>
+            <td>Updated molecular graph benchmark</td>
+            <td>3,746,619 total; 3,378,606 training molecules</td>
+            <td>DFT HOMO–LUMO gap; training-set 3D structures available</td>
+            <td>Large-scale molecular graph learning</td>
+            <td class="dataset-note">3D coordinates available for training only; total count differs from training count.</td>
+            <td class="dataset-references">
+              <a href="https://ogb.stanford.edu/docs/lsc/pcqm4mv2/">Official documentation and downloads</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dataset-group" id="dataset-group-2">
+    <h3>2. Materials, crystals, surfaces, and lattice dynamics</h3>
+    <div class="dataset-table-wrapper" tabindex="0" role="region" aria-label="2. Materials, crystals, surfaces, and lattice dynamics">
+      <table class="dataset-table">
+        <caption>19 entries · Scroll horizontally on smaller screens.</caption>
+        <colgroup>
+          <col style="width: 12%">
+          <col style="width: 16%">
+          <col style="width: 13%">
+          <col style="width: 17%">
+          <col style="width: 15%">
+          <col style="width: 17%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead><tr>
+          <th scope="col">Dataset / resource</th>
+          <th scope="col">Systems / coverage</th>
+          <th scope="col">Size / counting unit</th>
+          <th scope="col">Data / reference method</th>
+          <th scope="col">Task / main use</th>
+          <th scope="col">Version / representation notes</th>
+          <th scope="col">References</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">OQMD</th>
+            <td>Inorganic crystals; experimental structures and decorated prototypes</td>
+            <td>1,407,395 materials on the official database page checked</td>
+            <td>DFT structural and thermodynamic properties</td>
+            <td>Formation energies, phase stability, screening</td>
+            <td class="dataset-note">Growing database; this count is a dated snapshot, not a permanent dataset size.</td>
+            <td class="dataset-references">
+              <a href="https://www.oqmd.org/">Database</a>
+              <a href="https://oqmd.org/documentation/publications">Publications</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Materials Project-derived corpora</th>
+            <td>Broad inorganic materials</td>
+            <td>Corpus-dependent</td>
+            <td>Legacy PBE/PBE+U and newer r²SCAN data</td>
+            <td>Materials-property learning</td>
+            <td class="dataset-note">A family of extractions; do not mix PBE(+U) and r²SCAN labels without accounting for method differences.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1063/1.4812323">Original paper</a>
+              <a href="https://docs.materialsproject.org/methodology/materials-methodology/understanding-structures-and-properties-in-the-materials-project">Calculation documentation</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MPtrj</th>
+            <td>Materials Project static calculations and relaxation trajectories</td>
+            <td>1,580,395 configurations</td>
+            <td>PBE/PBE+U energies, forces, stresses and site magnetic moments</td>
+            <td>Universal materials potentials</td>
+            <td class="dataset-note">Trajectory configurations are not distinct materials.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2302.14231">CHGNet paper</a>
+              <a href="https://figshare.com/articles/dataset/Materials_Project_Trjectory_MPtrj_Dataset/23713842">Dataset</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MP-r²SCAN</th>
+            <td>Materials Project r²SCAN static and relaxation trajectories</td>
+            <td>34,927 material IDs; 238,247 structures</td>
+            <td>r²SCAN energies, forces, stresses, magnetic moments and band gaps</td>
+            <td>Higher-fidelity materials potentials</td>
+            <td class="dataset-note">Figshare v2; trajectories extracted from Materials Project data available in March 2024.</td>
+            <td class="dataset-references">
+              <a href="https://figshare.com/articles/dataset/Materials_Project_Trajectory_Dataset_of_r_sup_2_sup_SCAN_MPr_sup_2_sup_SCAN_/28245650/2">Dataset v2</a>
+              <a href="https://www.nature.com/articles/s41524-025-01796-y">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">OMat24</th>
+            <td>Bulk inorganic materials; distorted structures, relaxations, MD</td>
+            <td>&gt;110 million calculations</td>
+            <td>DFT energies, forces, cell stresses</td>
+            <td>Large-scale materials-potential training</td>
+            <td class="dataset-note">Includes nonequilibrium structures; specify which training/test split is counted.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2410.12771">Paper</a>
+              <a href="https://huggingface.co/datasets/facebook/OMAT24">Dataset</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Alexandria</th>
+            <td>Crystal structures and optimization paths</td>
+            <td>Release- and subset-dependent</td>
+            <td>PBE and other separately defined calculation sets</td>
+            <td>Materials discovery and MLIP training</td>
+            <td class="dataset-note">Multiple methods and dimensionalities are distributed as separate subsets.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1002/adma.202210788">Original paper</a>
+              <a href="https://alexandria.icams.ruhr-uni-bochum.de/datasets.html">Datasets</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">OpenLAM</th>
+            <td>Collection across chemical and materials domains</td>
+            <td>Version-dependent</td>
+            <td>Multiple constituent datasets and reference methods</td>
+            <td>Multi-task atomistic-model training</td>
+            <td class="dataset-note">Multi-source collection, not one uniformly calculated database.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2501.16358">OpenLAM paper</a>
+              <a href="https://www.aissquare.com/datasets/detail?pageType=datasets&amp;name=OpenLAM-TrainingSet-v1&amp;id=308">Training collection</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MAD</th>
+            <td>Chemically diverse, strongly distorted structures</td>
+            <td>&lt;100,000 structures in original release</td>
+            <td>Consistent electronic-structure reference data</td>
+            <td>Compact, diverse universal-potential training</td>
+            <td class="dataset-note">Original compact release; MAD-1.5 is a distinct extension.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2506.19674">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MatterSim training data</th>
+            <td>Materials across elements, temperatures, and pressures</td>
+            <td>3 million or 6 million configurations in the v1 model card</td>
+            <td>First-principles active-learning data</td>
+            <td>Potentials spanning 0–5,000 K and pressures up to 1,000 GPa</td>
+            <td class="dataset-note">Counts correspond to v1 checkpoints; model availability does not establish public release of the full training corpus.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2405.04967">Paper</a>
+              <a href="https://github.com/microsoft/mattersim">Repository</a>
+              <a href="https://github.com/microsoft/mattersim/blob/main/MODEL_CARD.md">Model/data description</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MDR phonon data</th>
+            <td>Crystals with phonon calculations</td>
+            <td>Roughly 10,000 materials</td>
+            <td>Phonon data; separate PBE recalculations available through Alexandria</td>
+            <td>Lattice-dynamics benchmarks and fine-tuning</td>
+            <td class="dataset-note">MDR is a repository; original phonon data and Alexandria PBE recalculations are separate resources.</td>
+            <td class="dataset-references">
+              <a href="https://mdr.nims.go.jp/collections/d7aab932-8512-4b9a-b93d-b61f6e5e7019">MDR collection</a>
+              <a href="https://alexandria.icams.ruhr-uni-bochum.de/datasets.html">PBE recalculations</a>
+              <a href="https://arxiv.org/abs/2601.07742">Fine-tuning paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">GNoME-derived sets</th>
+            <td>Predicted inorganic crystals</td>
+            <td>~2.2 million candidate structures; not a trajectory-frame count</td>
+            <td>First-principles stability and structure data</td>
+            <td>Crystal discovery and downstream potential training</td>
+            <td class="dataset-note">Predicted candidates, not experimentally confirmed compounds; discovery count is not a training-frame count.</td>
+            <td class="dataset-references">
+              <a href="https://www.nature.com/articles/s41586-023-06735-9">Paper</a>
+              <a href="https://deepmind.google/en/blog/millions-of-new-materials-discovered-with-deep-learning/">Project overview</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">SMAX</th>
+            <td>Diverse multi-element configurations and extreme conditions</td>
+            <td>1,693,386 configurations in the paper</td>
+            <td>PBE/VASP energies, forces and stresses</td>
+            <td>Robustness far from equilibrium</td>
+            <td class="dataset-note">1,660,322 training + 33,064 test configurations; maximum-entropy sampling.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2602.23489">Paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">OC20 / OC22</th>
+            <td>Catalytic surfaces and adsorption systems; OC22 emphasizes oxides</td>
+            <td>Combined project reports ~1.3 million relaxations and &gt;260 million DFT calculations</td>
+            <td>Surface energies and forces; adsorption reference calculations</td>
+            <td>Catalysis and adsorption prediction</td>
+            <td class="dataset-note">Combined project statistics; task-specific splits have different sizes.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2010.09990">OC20 paper</a>
+              <a href="https://arxiv.org/abs/2206.08917">OC22 paper</a>
+              <a href="https://opencatalystproject.org/index.html">Project and downloads</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">QMOF</th>
+            <td>Metal–organic frameworks and coordination polymers</td>
+            <td>More than 20,000 frameworks / coordination polymers</td>
+            <td>DFT electronic properties</td>
+            <td>MOF property prediction and discovery</td>
+            <td class="dataset-note">Use the release-specific count; the original notes cited 20,372.</td>
+            <td class="dataset-references">
+              <a href="https://github.com/Andrew-S-Rosen/QMOF">Official repository and paper references</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ICSD</th>
+            <td>Experimentally identified inorganic crystal structures</td>
+            <td>Release-dependent</td>
+            <td>Curated crystallographic records</td>
+            <td>Structural reference and crystal identification</td>
+            <td class="dataset-note">Experimental crystallographic database; access options differ from open ML datasets.</td>
+            <td class="dataset-references">
+              <a href="https://icsd.products.fiz-karlsruhe.de/en/products/icsd-products">Official database information</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Matbench</th>
+            <td>Collection of materials-property benchmarks</td>
+            <td>13 tasks in Matbench v0.1</td>
+            <td>Experimental and computed property targets</td>
+            <td>Comparing materials ML methods</td>
+            <td class="dataset-note">Includes classification and regression; distinct from Matbench Discovery.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1038/s41524-020-00406-3">Paper</a>
+              <a href="https://github.com/materialsproject/matbench">Repository</a>
+              <a href="https://docs.materialsproject.org/services/ml-and-ai-applications/matbench">Documentation</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Perov-5</th>
+            <td>Cubic perovskites; 5 atoms per unit cell; 56 elements</td>
+            <td>18,928 structures</td>
+            <td>Crystal structures and computational properties</td>
+            <td>Crystal-generation benchmarks</td>
+            <td class="dataset-note">CDVAE subset; most structures are hypothetical and not guaranteed synthesizable.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2110.06197">Benchmark paper</a>
+              <a href="https://github.com/txie-93/cdvae/tree/main/data">Dataset files</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Carbon-24</th>
+            <td>Carbon allotropes; 6–24 atoms per unit cell</td>
+            <td>10,153 structures</td>
+            <td>AIRSS structures generated at 10 GPa; computational structures</td>
+            <td>Crystal-generation benchmarks</td>
+            <td class="dataset-note">CDVAE subset; all structures contain carbon only.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2110.06197">Benchmark paper</a>
+              <a href="https://github.com/txie-93/cdvae/tree/main/data">Subset files</a>
+              <a href="https://archive.materialscloud.org/record/2020.0026/v1">Parent AIRSS data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MP-20</th>
+            <td>Materials Project crystals; 1–20 atoms per unit cell; 89 elements</td>
+            <td>45,231 structures</td>
+            <td>Crystal structures</td>
+            <td>Crystal-generation benchmarks</td>
+            <td class="dataset-note">CDVAE curated subset; count refers to the full subset before splitting.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2110.06197">Benchmark paper</a>
+              <a href="https://github.com/txie-93/cdvae/tree/main/data">Dataset files</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dataset-group" id="dataset-group-3">
+    <h3>3. Biological activity, toxicity, and physiological properties</h3>
+    <div class="dataset-table-wrapper" tabindex="0" role="region" aria-label="3. Biological activity, toxicity, and physiological properties">
+      <table class="dataset-table">
+        <caption>14 entries · Scroll horizontally on smaller screens.</caption>
+        <colgroup>
+          <col style="width: 12%">
+          <col style="width: 16%">
+          <col style="width: 13%">
+          <col style="width: 17%">
+          <col style="width: 15%">
+          <col style="width: 17%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead><tr>
+          <th scope="col">Dataset / resource</th>
+          <th scope="col">Systems / coverage</th>
+          <th scope="col">Size / counting unit</th>
+          <th scope="col">Data / reference method</th>
+          <th scope="col">Task / main use</th>
+          <th scope="col">Version / representation notes</th>
+          <th scope="col">References</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">MUTAG</th>
+            <td>Nitroaromatic molecular graphs</td>
+            <td>188</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Binary classification; 1 target(s): Mutagenicity</td>
+            <td class="dataset-note">TU benchmark; categorical atom/bond labels, no supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/jm00106a046">Original paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">SIDER</th>
+            <td>Molecular compounds</td>
+            <td>1,427</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 27 target(s): Drug side effects</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1093/nar/gkv1075">Kuhn et al. (2016)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ClinTox</th>
+            <td>Molecular compounds</td>
+            <td>1,484 molecules (PyG documentation)</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 2 targets: FDA approval and clinical-trial toxicity</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1016/j.chembiol.2016.07.023">Gayvert et al. (2016)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">BBBP</th>
+            <td>Molecular compounds</td>
+            <td>2,050 molecules (PyG documentation)</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Binary classification; 1 target(s): Blood–brain barrier penetration</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/22612593/">Martins et al. (2012)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">NCI1</th>
+            <td>Molecular compounds</td>
+            <td>4,110</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Binary classification; 1 target(s): Anticancer activity</td>
+            <td class="dataset-note">TU benchmark; no supplied 3D coordinates. Distinct from other NCI-derived datasets.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1007/s10115-007-0103-5">Paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Tox21</th>
+            <td>Molecular compounds</td>
+            <td>7,831</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 12 target(s): Toxicological assay outcomes</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://tripod.nih.gov/tox21/challenge/index.jsp">Tox21 Challenge (2014)</a>
+              <a href="https://tripod.nih.gov/tox21/challenge/data.jsp">Challenge data</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ToxCast</th>
+            <td>Molecular compounds</td>
+            <td>8,597 molecules (PyG documentation)</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 617 target(s): Large-scale toxicological assays</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/acs.chemrestox.6b00135">Richard et al. (2016)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">BACE</th>
+            <td>Molecular compounds</td>
+            <td>1,513</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Binary classification; 1 target(s): BACE-1 inhibition</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/acs.jcim.6b00290">Subramanian et al. (2016)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">CCRF-CEM</th>
+            <td>Compounds tested against a T-cell leukemia cell line</td>
+            <td>3,047</td>
+            <td>ChEMBL23-derived pIC50 labels; molecular structures / images</td>
+            <td>Regression; 1 target(s): Cancer-cell-line sensitivity / potency</td>
+            <td class="dataset-note">KekuleScope regression subset; not a generic TU graph dataset.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1186/s13321-019-0364-5">Paper</a>
+              <a href="https://github.com/isidroc/kekulescope">Data and code</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">PC-3</th>
+            <td>Compounds tested against a prostate cancer cell line</td>
+            <td>4,294</td>
+            <td>ChEMBL23-derived pIC50 labels; molecular structures / images</td>
+            <td>Regression; 1 target(s): Cancer-cell-line sensitivity / potency</td>
+            <td class="dataset-note">KekuleScope regression subset; distinct from the TU PC-3 classification dataset.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1186/s13321-019-0364-5">Paper</a>
+              <a href="https://github.com/isidroc/kekulescope">Data and code</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">PDBbind</th>
+            <td>Protein–ligand complexes</td>
+            <td>19,443 complexes in v2020</td>
+            <td>Experimental binding affinities and 3D protein–ligand complexes</td>
+            <td>Regression; 1 target(s): Protein–ligand binding affinity</td>
+            <td class="dataset-note">Specify general/refined/core set; complex count is not a unique-ligand count.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/jm030580l">Wang et al. (2004)</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">HIV</th>
+            <td>Molecular compounds</td>
+            <td>41,127</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 1 target(s): Anti-HIV activity</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://dctd.cancer.gov/data-tools-biospecimens/data">NCI AIDS Antiviral Screen data</a>
+              <a href="https://doi.org/10.1039/C7SC02664A">MoleculeNet paper</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">MUV</th>
+            <td>Molecular compounds</td>
+            <td>93,087</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 17 target(s): Virtual-screening assay activity</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/ci8002649">Rohrer &amp; Baumann (2009)</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">PCBA</th>
+            <td>Molecular compounds</td>
+            <td>437,929</td>
+            <td>Experimental labels; molecular graphs / SMILES</td>
+            <td>Classification; 128 target(s): PubChem bioassay activity</td>
+            <td class="dataset-note">MoleculeNet/PyG documented count; preprocessing can change usable records. No supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5480605/">PubChem BioAssay resource</a>
+              <a href="https://doi.org/10.1039/C7SC02664A">MoleculeNet benchmark</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader / counts</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dataset-group" id="dataset-group-4">
+    <h3>4. Physicochemical properties, reactions, and chemical-method benchmarks</h3>
+    <div class="dataset-table-wrapper" tabindex="0" role="region" aria-label="4. Physicochemical properties, reactions, and chemical-method benchmarks">
+      <table class="dataset-table">
+        <caption>9 entries · Scroll horizontally on smaller screens.</caption>
+        <colgroup>
+          <col style="width: 12%">
+          <col style="width: 16%">
+          <col style="width: 13%">
+          <col style="width: 17%">
+          <col style="width: 15%">
+          <col style="width: 17%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead><tr>
+          <th scope="col">Dataset / resource</th>
+          <th scope="col">Systems / coverage</th>
+          <th scope="col">Size / counting unit</th>
+          <th scope="col">Data / reference method</th>
+          <th scope="col">Task / main use</th>
+          <th scope="col">Version / representation notes</th>
+          <th scope="col">References</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">FreeSolv</th>
+            <td>Small neutral organic molecules in water</td>
+            <td>642 molecules in the standard graph benchmark</td>
+            <td>Experimental and calculated hydration free energies; SMILES and simulation files</td>
+            <td>Regression; hydration free energy</td>
+            <td class="dataset-note">Graph benchmark is 2D; the parent resource also provides coordinate/topology files.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1007/s10822-014-9747-x">Paper</a>
+              <a href="https://github.com/MobleyLab/FreeSolv">Data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ESOL</th>
+            <td>Organic molecules with measured aqueous solubility</td>
+            <td>1,128 molecules in the standard benchmark</td>
+            <td>Experimental log molar solubility; SMILES</td>
+            <td>Regression; aqueous solubility</td>
+            <td class="dataset-note">Standard benchmark has no supplied 3D coordinates.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1021/ci034243x">Delaney paper</a>
+              <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MoleculeNet.html">Benchmark loader</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Lipophilicity</th>
+            <td>ChEMBL/AstraZeneca compounds</td>
+            <td>4,200 molecules</td>
+            <td>Experimental octanol/water logD at pH 7.4; SMILES</td>
+            <td>Regression; distribution coefficient</td>
+            <td class="dataset-note">Target is logD7.4, not an unspecified logP value.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.6019/chembl3301361">Original data</a>
+              <a href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#lipophilicity-dataset">Benchmark description</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">AqSolDB</th>
+            <td>Diverse organic compounds from nine source collections</td>
+            <td>9,982 unique compounds</td>
+            <td>Aqueous solubility and 2D physicochemical/topological descriptors</td>
+            <td>Regression; aqueous solubility</td>
+            <td class="dataset-note">Curated merged resource; account for differences in measurement conditions.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1038/s41597-019-0151-1">Paper</a>
+              <a href="https://github.com/mcsorkun/AqSolDB">Repository</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ZINC benchmark subset</th>
+            <td>Small molecular graphs sampled from ZINC</td>
+            <td>12,000 graphs in the commonly used subset</td>
+            <td>Atom/bond graph features and a computed regression target</td>
+            <td>Graph regression; constrained-solubility benchmark</td>
+            <td class="dataset-note">Not the full ZINC database; benchmark target is not experimental aqueous solubility.</td>
+            <td class="dataset-references">
+              <a href="https://arxiv.org/abs/2003.00982">Benchmark paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">GMTKN55</th>
+            <td>Main-group thermochemistry, barrier heights and noncovalent interactions</td>
+            <td>55 subsets; 1,505 relative energies from 2,462 single-point systems</td>
+            <td>High-level reference energies and molecular geometries</td>
+            <td>Assess electronic-structure methods</td>
+            <td class="dataset-note">Benchmark suite; not a homogeneous ML force-field training set.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1039/C7CP04913G">Paper</a>
+              <a href="https://www.chemie.uni-bonn.de/grimme/de/software/gmtkn/gmtkn55">Reference data</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ORD — Open Reaction Database</th>
+            <td>Organic reaction experiments</td>
+            <td>Growing; release-dependent</td>
+            <td>Structured reactants, products, conditions and outcomes</td>
+            <td>Reaction-data sharing and reaction-model development</td>
+            <td class="dataset-note">Schema plus repository; not a quantum energy/force dataset.</td>
+            <td class="dataset-references">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/34727496/">Paper</a>
+              <a href="https://open-reaction-database.org/">Database</a>
+              <a href="https://docs.open-reaction-database.org/en/stable/overview.html">Schema documentation</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">DREAM Olfaction Challenge</th>
+            <td>Odor molecules rated by human participants</td>
+            <td>476 molecules; 49 participants; 21 perceptual attributes</td>
+            <td>Human ratings and molecular descriptors</td>
+            <td>Predict individual and population odor perception</td>
+            <td class="dataset-note">Original challenge reported in 2017; remove the unsupported 2025 edition label.</td>
+            <td class="dataset-references">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5455768/">Challenge paper</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Lowe chemical-extraction thesis / associated data</th>
+            <td>Chemical names and reaction procedures in USPTO patents</td>
+            <td>424,621 atom-mapped reactions from 65,034 patents reported in the thesis</td>
+            <td>Text-mining methods, extracted reactions and supporting files</td>
+            <td>Chemical-name conversion and reaction extraction</td>
+            <td class="dataset-note">A thesis and associated research data, not one standardized benchmark split.</td>
+            <td class="dataset-references">
+              <a href="https://www.repository.cam.ac.uk/items/dbb4f258-8f3c-4b59-9b5c-62fac7ca8c28">Thesis and supporting files</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="dataset-group" id="dataset-group-5">
+    <h3>5. Protein and general graph-learning benchmarks</h3>
+    <div class="dataset-table-wrapper" tabindex="0" role="region" aria-label="5. Protein and general graph-learning benchmarks">
+      <table class="dataset-table">
+        <caption>6 entries · Scroll horizontally on smaller screens.</caption>
+        <colgroup>
+          <col style="width: 12%">
+          <col style="width: 16%">
+          <col style="width: 13%">
+          <col style="width: 17%">
+          <col style="width: 15%">
+          <col style="width: 17%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead><tr>
+          <th scope="col">Dataset / resource</th>
+          <th scope="col">Systems / coverage</th>
+          <th scope="col">Size / counting unit</th>
+          <th scope="col">Data / reference method</th>
+          <th scope="col">Task / main use</th>
+          <th scope="col">Version / representation notes</th>
+          <th scope="col">References</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">PROTEINS</th>
+            <td>Protein structures represented as secondary-structure-element graphs</td>
+            <td>1,113 graphs; 2 classes</td>
+            <td>Graph connectivity, node labels and continuous node attributes</td>
+            <td>Binary graph classification; enzyme vs non-enzyme</td>
+            <td class="dataset-note">TU catalog: 1 continuous attribute per node; PROTEINS_full has 29. No geometry field.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1093/bioinformatics/bti1007">Graph representation paper</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/12850146/">Source study</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">ENZYMES</th>
+            <td>Enzyme structures represented as secondary-structure-element graphs</td>
+            <td>600 graphs; 6 classes</td>
+            <td>Graph connectivity, node labels and 18 continuous node attributes</td>
+            <td>Six-class graph classification; enzyme class</td>
+            <td class="dataset-note">TU graph benchmark; no geometry field.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1093/bioinformatics/bti1007">Graph representation paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">DD</th>
+            <td>Protein structures represented as residue-contact graphs</td>
+            <td>1,178 graphs; 2 classes</td>
+            <td>Graph connectivity and categorical node labels</td>
+            <td>Binary graph classification; enzyme vs non-enzyme</td>
+            <td class="dataset-note">TU graph benchmark; no continuous node attributes or geometry field.</td>
+            <td class="dataset-references">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/12850146/">Source study</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">COLLAB</th>
+            <td>Researcher ego-networks from three physics collaboration fields</td>
+            <td>5,000 graphs; 3 classes</td>
+            <td>Unattributed collaboration graph connectivity</td>
+            <td>Three-class graph classification; physics research field</td>
+            <td class="dataset-note">Social-network benchmark; no node labels, continuous attributes or geometry field.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1145/2783258.2783417">Original benchmark paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">REDDIT-BINARY</th>
+            <td>Reddit discussion graphs; users as nodes, interactions as edges</td>
+            <td>2,000 graphs; 2 classes</td>
+            <td>Unattributed discussion graph connectivity</td>
+            <td>Binary graph classification; discussion-community type</td>
+            <td class="dataset-note">Use REDDIT-BINARY in dataset loaders; RDT-B is an informal abbreviation.</td>
+            <td class="dataset-references">
+              <a href="https://doi.org/10.1145/2783258.2783417">Original benchmark paper</a>
+              <a href="https://chrsmrrs.github.io/datasets/docs/datasets/">TU catalog</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">CASP / Protein Structure Prediction Center</th>
+            <td>Protein sequences and blind structure-prediction targets</td>
+            <td>Assessment-round-dependent</td>
+            <td>Target sequences, submitted models and reference structures</td>
+            <td>Blind assessment of protein-structure prediction</td>
+            <td class="dataset-note">Recurring community assessment; not a fixed TU-style graph dataset.</td>
+            <td class="dataset-references">
+              <a href="https://predictioncenter.org/index.cgi">Prediction Center</a>
+              <a href="https://predictioncenter.org/index.cgi?page=proceedings">Proceedings and references</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="dataset-meta">For reproducible work, cite the original paper, the exact data release and the split or preprocessing protocol used. Missing assay labels are not negative labels.</p>
 </section>
+
 
 <section class="section" id="ai">
     <h2>AI in Our Lab</h2>
     <ul>
-        <li>currently developing this page</li>
+        <li>Our lab will contribution to the research community in developing AI models and datasets under FAIR principle.</li>
     </ul>
 </section>
 
